@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="navbar">
+      <div class="logo">
+        <div>Księgarnia</div>
+        <div>KLEKS</div>
+      </div>
+      <div class="nav-links">
+        <a class="navlink" href="Home.html">Lobby</a>
+        <a class="navlink" href="Books.html">Książki</a>
+        <a class="navlink" href="About.html">O nas</a>
+        <a class="navlink" href="Contact.html">Kontakt</a>
+        <span
+          style="
+            display: inline-block;
+            width: 2px;
+            height: 35px;
+            background-color: #468484;
+            margin: 0 10px;
+          "
+        ></span>
+        <a class="navlink" href="Login.html">Login</a>
+        <a class="navlink"><img src="assets/koszyk.svg" /></a>
+      </div>
+    </section>
+    <hr class="horizontal-separator sep-top" />
+    <section class="search-area">
+      <input class="search-bar" placeholder="Wyszukaj..." onchange="search" />
+    </section>
+    <hr class="horizontal-separator sep-bottom" />
+    <section class="options">
+      <button class="button">Sortuj</button>
+      <button class="button">Filtruj</button>
+      <button class="button">Dodaj książkę</button>
+    </section>
+    <section class="book-grid" id="book-grid">
+      <!-- dynamicznie generowane kafelki z listy w js, 12 sztuk dla przykładu -->
+    </section>
+    <section class="footer">
+      <div class="footer-text">
+        Księgarnia Kleks | 2025 | Made by Jakub Kędzia
+      </div>
+    </section>
+
+    <script src="script.js" async defer></script>
+  </body>
+</html>

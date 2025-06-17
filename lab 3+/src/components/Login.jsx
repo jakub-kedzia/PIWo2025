@@ -1,17 +1,25 @@
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { Context } from "../context/Context";
 
 export default function Login() {
-  const { setUser } = useContext(Context);
+  const { user, setUser } = useContext(Context);
 
   const handle_login = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
+
+      const userData = {
+        uid: user.uid,
+        displayName: user.displayName,
+      };
+      localStorage.setItem("user", JSON.stringify(userData));
+
       setUser(user);
-      console.log("Logged in :", user.displayName);
+
+      console.log("Logged in :", user.displayName, ", ", user.uid);
     } catch (error) {
       console.error("While trying to log in, an error occurred: ", error);
     }
@@ -23,10 +31,16 @@ export default function Login() {
         className="navlink"
         onClick={(e) => {
           e.preventDefault;
-          handle_login();
+
+          if (user == null) {
+            handle_login();
+          } else {
+            setUser(null);
+            localStorage.removeItem("user");
+          }
         }}
       >
-        Login
+        {user == null ? "Zaloguj" : "Wyloguj"}
       </a>
     </>
   );

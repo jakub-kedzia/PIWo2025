@@ -69,6 +69,7 @@ export default function NewBook() {
       <label>
         Tytuł:
         <input
+          name="title"
           value={title}
           type="text"
           onChange={(e) => setTitle(e.target.value)}
@@ -77,6 +78,7 @@ export default function NewBook() {
       <label>
         Autor:
         <input
+          name="author"
           value={author}
           type="text"
           onChange={(e) => setAuthor(e.target.value)}
@@ -85,6 +87,7 @@ export default function NewBook() {
       <label>
         Cena:
         <input
+          name="price"
           value={price}
           step="0.01"
           type="number"

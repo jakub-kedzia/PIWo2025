@@ -9,6 +9,15 @@ export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (e) {
+        console.error("Invalid user in localStorage:", e);
+      }
+    }
+
     const getBooks = async () => {
       try {
         const coll = collection(db, "books");

@@ -33,7 +33,11 @@ function HomePage() {
         <button className="button" onClick={() => navigate("/new-book")}>
           Dodaj książkę
         </button>
-        <button className="button" onClick={() => navigate("/my-books")}>
+        <button
+          className="button"
+          name="myBooks"
+          onClick={() => navigate("/my-books")}
+        >
           Pokaż moje
         </button>
       </section>

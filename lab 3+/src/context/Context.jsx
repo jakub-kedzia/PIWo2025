@@ -1,12 +1,14 @@
-import React, { useEffect, createContext, useState, use } from "react";
+import React, { useEffect, createContext, useState, useReducer } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
+import { favReducer } from "../reducer";
 
 export const Context = createContext();
 
 export const ContextProvider = ({ children }) => {
   const [booksList, setBooksList] = useState([]);
   const [user, setUser] = useState(null);
+  const [favourites, dispatch] = useReducer(favReducer, []);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -37,7 +39,9 @@ export const ContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <Context.Provider value={{ booksList, setBooksList, user, setUser }}>
+    <Context.Provider
+      value={{ booksList, setBooksList, user, setUser, favourites, dispatch }}
+    >
       {children}
     </Context.Provider>
   );

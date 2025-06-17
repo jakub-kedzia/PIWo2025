@@ -4,6 +4,7 @@ import App from "./App";
 import HomePage from "./components/HomePage";
 import NewBook from "./components/NewBook";
 import MyBooks from "./components/MyBooks";
+import FavList from "./components/FavList";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
       { index: true, element: <HomePage /> },
       { path: "new-book", element: <NewBook /> },
       { path: "my-books", element: <MyBooks /> },
+      { path: "fav-list", element: <FavList /> },
     ],
   },
 ]);

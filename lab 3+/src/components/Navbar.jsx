@@ -28,6 +28,9 @@ function Navbar() {
               margin: "0 10px",
             }}
           ></span>
+          <Link className="navlink" to="fav-list">
+            Ulubione
+          </Link>
           <Login />
         </div>
       </section>

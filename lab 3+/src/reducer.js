@@ -14,7 +14,7 @@ export const favReducer = (state, action) => {
         action.payload,
         " was removed from the favourites list."
       );
-      return state.filter((book) => book.name !== action.payload);
+      return state.filter((book) => book != action.payload);
 
     default:
       console.error("No action of this type is defined: ", action.type);

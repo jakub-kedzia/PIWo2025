@@ -1,5 +1,5 @@
 beforeEach(() => {
-  cy.visit("/", {
+  cy.visit("http://localhost:5173/", {
     onBeforeLoad(win) {
       const testUser = {
         uid: "THW8leCxqsToVpmYll3IYbMHNV53",
@@ -30,7 +30,7 @@ it("allows adding a book", () => {
   cy.get('input[name="price"]').type("25.99");
   cy.contains("Dodaj").click();
   cy.wait(1000);
-  cy.visit("/my-books");
+  cy.visit("http://localhost:5173/my-books");
   cy.contains("W Pustyni i w Puszczy").should("exist");
 });
 

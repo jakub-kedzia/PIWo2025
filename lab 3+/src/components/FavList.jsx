@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../context/Context";
 
 export default function FavList() {
@@ -8,12 +8,18 @@ export default function FavList() {
     dispatch({ type: "REMOVE", payload: name });
   };
 
+  // useEffect(() => {
+  //   if (JSON.parse(localStorage.getItem("fav")) != [])
+  //     setLocalFavList(JSON.parse(localStorage.getItem("fav")));
+  //   console.log("ananananas");
+  // }, []);
+
   return (
     <>
       <ol>
         {Array.isArray(favourites) && favourites.length > 0 ? (
           favourites.map((fav) => (
-            <li>
+            <li key={fav}>
               {fav}{" "}
               <button
                 onClick={() => {

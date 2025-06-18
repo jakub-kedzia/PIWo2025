@@ -8,7 +8,19 @@ export const Context = createContext();
 export const ContextProvider = ({ children }) => {
   const [booksList, setBooksList] = useState([]);
   const [user, setUser] = useState(null);
-  const [favourites, dispatch] = useReducer(favReducer, []);
+  // const [localFavList, setLocalFavList] = useState([]);
+
+  const init = () => {
+    const favState = localStorage.getItem("fav");
+    return favState ? JSON.parse(favState) : [];
+  };
+
+  const [favourites, dispatch] = useReducer(favReducer, [], init);
+
+  useEffect(() => {
+    localStorage.setItem("fav", JSON.stringify(favourites));
+    console.log("banananana");
+  }, [favourites.length]);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -40,7 +52,14 @@ export const ContextProvider = ({ children }) => {
 
   return (
     <Context.Provider
-      value={{ booksList, setBooksList, user, setUser, favourites, dispatch }}
+      value={{
+        booksList,
+        setBooksList,
+        user,
+        setUser,
+        favourites,
+        dispatch,
+      }}
     >
       {children}
     </Context.Provider>
